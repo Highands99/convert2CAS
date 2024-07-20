@@ -56,7 +56,7 @@ The software operates in two modes:
 
 2) CAS to Dataset mode: onverts a UIMA CAS JSON (not XMI) file to a dataset format, implicitly activated when the `--cas_file` parameter is provided.
 
-    - **Note** `--input` file should be the original dataset from which the `--cas_file` was generated before being imported into the text annotation tool.
+    - **Note** `--dataset` file should be the original dataset from which the `--cas_file` was generated before being imported into a text annotation tool.
 
 
 ### Arguments
@@ -69,10 +69,10 @@ The software operates in two modes:
 - `--cas_file`: path to the input UIMA CAS JSON file.
 
 ### Examples
-If files `doc.txt` and `typesystem.xml` are already present in the same folder as `main.py` and you want to convert `doc.txt` into a UIMA CAS JSON file called `output.json`, then use the following command:
+If files `doc.txt` and `typesystem.xml` are already present in the same folder as `main.py` and you want to convert `doc.txt` into a new UIMA CAS JSON file called `output.json`, then use the following command:
     
     python main.py
 
-To convert a UIMA CAS json file back into a dataset, use the following command:
+To convert a UIMA CAS json file back into a new dataset file called `output.txt`, use the following command:
     
     python main.py --cas_file inception_export.json
