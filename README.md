@@ -45,18 +45,16 @@ Before start you shoud have a dataset file and a typesystem file.
 
 For an example dataset, you can refer to [this repo](https://github.com/dair-iitd/DSRE). 
 
-The type system file must be exported from the text annotation tool you are using for the conversion, INCEpTION for example:
+The typesystem file must be exported from the text annotation tool you are using for the conversion, INCEpTION for example:
 1) Go to the Layers tab on the project Settings page.
 2) Press the Export button in the Layer Details section.
 3) Select UIMA and click Download to save the type system.
 
 The software operates in two modes:
 
-2) Datase to CAS mode (default)
-Converts the dataset to UIMA CAS and outputs the result in either XMI or JSON format based on the ` --output`  file extension.
+1) Dataset to CAS mode (default): converts the dataset to UIMA CAS and outputs the result in either XMI or JSON format based on the ` --output`  file extension.
 
-2) CAS to Dataset mode
-Converts a UIMA CAS JSON (not XMI) file to a dataset format, implicitly activated when the `--cas_file` parameter is provided.
+2) CAS to Dataset mode: onverts a UIMA CAS JSON (not XMI) file to a dataset format, implicitly activated when the `--cas_file` parameter is provided.
 
     - **Note** `--input` file should be the original dataset from which the `--cas_file` was generated before being imported into the text annotation tool.
 
