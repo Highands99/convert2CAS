@@ -13,7 +13,7 @@ def is_tokenized(json_line):
         raise ValueError("File line is empty")
 
     if "token" in json_line:
-            return True
+        return True
     elif "text" in json_line:
         return False
     else:
@@ -57,9 +57,11 @@ def json_parser_tokens(json_line):
 
 
 def create_span_annotation(span_info, Span, offset=0):
+    wikidata = "http://www.wikidata.org/entity/" + span_info["id"]
     return Span(
         begin = span_info["pos"][0] + offset,
         end = span_info["pos"][1] + offset,
+        identifier = wikidata,
         label = span_info["id"],
     )
 
@@ -181,7 +183,8 @@ def json_to_cas_converter(Typesystem, Span, Relation, Sentence, Token, document_
 
         for line_number, line in enumerate(doc_file, start=1):
             line = line.strip()
-            if not line: continue
+            if not line:
+                continue
 
             offset = len(cas.sofa_string)
 
@@ -224,8 +227,9 @@ def cas_to_json_converter(Typesystem, Span, Relation, Sentence, Token, document_
 
     if output_path.split(".")[-1] != "txt":
         output_path += ".txt"
-    
-    with open(document_path, 'r', encoding='utf-8') as doc_file , open(output_path,'w', encoding='utf-8') as exp_file:
+
+    with open(document_path, 'r', encoding='utf-8') as doc_file, \
+         open(output_path,'w', encoding='utf-8') as exp_file:
         first_line = doc_file.readline().strip()
         json_line = json.loads(first_line)
 
